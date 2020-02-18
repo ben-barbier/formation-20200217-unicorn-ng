@@ -1,4 +1,28 @@
-<span>{{ unicorn.name }}</span>
-<span>{{ unicorn.capacityLabels | json }}</span>
-<span (click)="addToCart()">♥️</span>
-<span (click)="delete()">🗑</span>
+<mat-card class="example-card">
+    <mat-card-header>
+        <img mat-card-avatar [src]="unicorn.photo">
+        <mat-card-title>{{ unicorn.name }}</mat-card-title>
+        <mat-card-subtitle>ID: {{ unicorn.id }}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="unicorn.photo">
+    <mat-card-content>
+        <div>birthyear: {{unicorn.birthyear}}</div>
+        <div>weight: {{unicorn.weight}}</div>
+        <div>hobbies: {{unicorn.hobbies}}</div>
+        <div>capacityLabels: {{unicorn.capacityLabels}}</div>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-mini-fab [color]="isInCart?'accent':'primary'" (click)="toggleToCart()">
+            <mat-icon>favorite</mat-icon>
+        </button>
+        <button mat-mini-fab color="primary">
+            <mat-icon>visibility</mat-icon>
+        </button>
+        <button mat-mini-fab color="primary">
+            <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-mini-fab color="warn">
+            <mat-icon (click)="delete()">delete</mat-icon>
+        </button>
+    </mat-card-actions>
+</mat-card>

@@ -5,17 +5,37 @@ import {AppComponent} from './app.component';
 import {UnicornCardComponent} from './pages/unicorn-list/unicorn-card/unicorn-card.component';
 import {UnicornListComponent} from './pages/unicorn-list/unicorn-list.component';
 import {HttpClientModule} from '@angular/common/http';
+import {HeaderComponent} from './shared/components/header/header.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatIconModule} from '@angular/material/icon';
+import {NavComponent} from './shared/components/nav/nav.component';
+import {LayoutModule} from '@angular/cdk/layout';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatButtonModule} from '@angular/material/button';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatListModule} from '@angular/material/list';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
     declarations: [
         AppComponent,
         UnicornCardComponent,
         UnicornListComponent,
+        HeaderComponent,
+        NavComponent,
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         HttpClientModule,
+        BrowserAnimationsModule,
+        MatIconModule,
+        LayoutModule,
+        MatToolbarModule,
+        MatButtonModule,
+        MatSidenavModule,
+        MatListModule,
+        MatCardModule,
     ],
     providers: [],
     bootstrap: [AppComponent]
