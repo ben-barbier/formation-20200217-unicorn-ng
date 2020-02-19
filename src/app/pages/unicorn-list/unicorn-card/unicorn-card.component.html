@@ -1,10 +1,7 @@
-
-{{ badFunction() }}
-
 <mat-card class="example-card">
     <mat-card-header>
         <img mat-card-avatar [src]="unicorn.photo">
-        <mat-card-title>{{ unicorn.name }}</mat-card-title>
+        <mat-card-title>{{ unicorn.name | magicalName }}</mat-card-title>
         <mat-card-subtitle>ID: {{ unicorn.id }}</mat-card-subtitle>
     </mat-card-header>
     <img mat-card-image [src]="unicorn.photo">

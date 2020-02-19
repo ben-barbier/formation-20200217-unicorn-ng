@@ -26,13 +26,13 @@ export class UnicornListComponent {
             debugger;
         });
 
-        interval(1000).pipe(
-            tap(i => console.log(i)),
-            map(() => new Date()),
-        ).subscribe(time => {
-            console.log('sub' + time);
-            this.time = time;
-        });
+        // interval(1000).pipe(
+        //     tap(i => console.log(i)),
+        //     map(() => new Date()),
+        // ).subscribe(time => {
+        //     console.log('sub' + time);
+        //     this.time = time;
+        // });
 
     }
 

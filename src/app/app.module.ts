@@ -15,7 +15,9 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatCardModule} from '@angular/material/card';
-import { AdminComponent } from './pages/admin/admin.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+import { MagicalNamePipe } from './shared/pipes/magical-name.pipe';
 
 @NgModule({
     declarations: [
@@ -24,7 +26,7 @@ import { AdminComponent } from './pages/admin/admin.component';
         UnicornListComponent,
         HeaderComponent,
         NavComponent,
-        AdminComponent,
+        MagicalNamePipe,
     ],
     imports: [
         BrowserModule,
@@ -38,6 +40,7 @@ import { AdminComponent } from './pages/admin/admin.component';
         MatSidenavModule,
         MatListModule,
         MatCardModule,
+        ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     ],
     providers: [
         // { provide: UnicornsService, useClass: UnicornsService },

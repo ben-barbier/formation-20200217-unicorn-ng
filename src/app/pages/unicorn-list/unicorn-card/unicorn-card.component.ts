@@ -43,10 +43,4 @@ export class UnicornCardComponent implements OnInit {
         this.removed.emit(this.unicorn);
     }
 
-    public badFunction() {
-        console.count('badFunction');
-        this.unicorn = {...this.unicorn, name: this.unicorn.name.toUpperCase()}
-        this.unicorn.name = 'coucou';
-        return 'coucou';
-    }
 }
