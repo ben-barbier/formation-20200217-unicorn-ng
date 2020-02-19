@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {CartService} from '../../services/cart.service';
+import {map} from 'rxjs/operators';
 
 @Component({
     selector: 'app-header',
@@ -8,10 +9,9 @@ import {CartService} from '../../services/cart.service';
 })
 export class HeaderComponent {
 
-    public cartSize: number;
+    public cartSize$ = this.cartService.cart$.pipe(map(cart => cart.length));
 
-    constructor(cartService: CartService) {
-        cartService.cart.subscribe(cart => this.cartSize = cart.length);
+    constructor(private cartService: CartService) {
     }
 
 }

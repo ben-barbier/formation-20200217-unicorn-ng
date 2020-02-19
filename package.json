@@ -5,8 +5,9 @@
         "ng": "ng",
         "start": "ng serve",
         "start:server": "json-server mock-server/db.json --config=mock-server/json-server.json",
-        "build": "npm run lint && ng build --prod",
+        "build": "npm run lint && ng build --prod --base-href /unicorn-ng/",
         "build:recette": "ng build -environment=recette",
+        "build:audit": "ng build --prod --source-map",
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e"

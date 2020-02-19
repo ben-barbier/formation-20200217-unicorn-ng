@@ -1,11 +1,12 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {Unicorn} from '../../../shared/models/unicorn.model';
 import {CartService} from '../../../shared/services/cart.service';
 
 @Component({
     selector: 'app-unicorn-card',
     templateUrl: './unicorn-card.component.html',
-    styleUrls: ['./unicorn-card.component.scss']
+    styleUrls: ['./unicorn-card.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UnicornCardComponent implements OnInit {
 
@@ -17,11 +18,16 @@ export class UnicornCardComponent implements OnInit {
 
     public isInCart: boolean;
 
-    constructor(private cartService: CartService) {
+    constructor(private cartService: CartService,
+                private cd: ChangeDetectorRef) {
     }
 
     ngOnInit(): void {
-        this.isInCart = this.cartService.cart.getValue().some(u => u.id === this.unicorn.id);
+        this.cartService.cart$.subscribe(cart => {
+            this.isInCart = cart.some(u => u.id === this.unicorn.id);
+            this.cd.markForCheck();
+            this.cd.detectChanges();
+        });
     }
 
     public toggleToCart() {
@@ -30,7 +36,6 @@ export class UnicornCardComponent implements OnInit {
         } else {
             this.cartService.addToCart(this.unicorn);
         }
-        this.isInCart = !this.isInCart;
     }
 
     public delete() {
@@ -38,4 +43,10 @@ export class UnicornCardComponent implements OnInit {
         this.removed.emit(this.unicorn);
     }
 
+    public badFunction() {
+        console.count('badFunction');
+        this.unicorn = {...this.unicorn, name: this.unicorn.name.toUpperCase()}
+        this.unicorn.name = 'coucou';
+        return 'coucou';
+    }
 }

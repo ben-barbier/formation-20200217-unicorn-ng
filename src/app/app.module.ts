@@ -15,6 +15,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatListModule} from '@angular/material/list';
 import {MatCardModule} from '@angular/material/card';
+import { AdminComponent } from './pages/admin/admin.component';
 
 @NgModule({
     declarations: [
@@ -23,6 +24,7 @@ import {MatCardModule} from '@angular/material/card';
         UnicornListComponent,
         HeaderComponent,
         NavComponent,
+        AdminComponent,
     ],
     imports: [
         BrowserModule,
@@ -37,7 +39,10 @@ import {MatCardModule} from '@angular/material/card';
         MatListModule,
         MatCardModule,
     ],
-    providers: [],
+    providers: [
+        // { provide: UnicornsService, useClass: UnicornsService },
+        // UnicornsService
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {
